@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Simulador de autômato de pilha</title>
+</head>
+<body>
+    <h1 class="gradient">Simulador de autômato de pilha</h1>
+    <div>
+        <p style="float: left; width: 50%; height:200px;">
+            <b>Linguagem = { a<sup>n</sup>b<sup>n</sup> | n &ge; 0}. <br /></b>
+            Onde <b>P = </b>(Q, Σ, Γ, δ, q0, F), <br /> <b>Q =</b> {q0, q1} , <br /> <b>∑ = </b>{a,b} , <br /> <b>Γ = </b>{a , b}, <br /> <b> F = </b>{q1} <br /><br />
+        </p>
+        <p style="float: left; width: 50%; height: 200px;">
+            <b>Função de Transição (δ):</b> <br /><br />
+
+            1) δ (q0 , a ,  λ  )  = { (q0, a ) }<br />
+            2) δ (q0 , a ,  a  )  = { (q0, a ) }<br />
+            3) δ (q0 , b ,  a  )  = { (q1, λ ) }<br />
+            4) δ (q1 , b ,  a  )  = { (q1, λ ) }<br />
+            5) δ (q0 , λ ,  b  )  = { (q0, λ ) }<br />
+        </p>
+    </div>
+
+    <svg id='inicio' height='75' width='50'>
+        <text x="15" y="15" fill="#1F0812" font-family="Times New Roman">I</text>
+    </svg>
+
+    <svg id="seta1" class="svg1" xmlns="http://www.w3.org/2000/svg" viewBox="0 40 400 200">
+        <marker id="triangle"
+                viewBox="0 0 10 10" refX="0" refY="5"
+                markerUnits="strokeWidth"
+                markerWidth="20" markerHeight="15"
+                orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" />
+        </marker>
+        <line id="line1" x1="-50" y1="150" x2="350" y2="150" marker-end="url(#triangle)" stroke="#1F0812" />
+        <i class="arrow right"></i>
+    </svg>
+
+    <svg id='circulo1' class="svg1">
+        <circle cx="50" cy="50" r="40" stroke="#1F0812" fill="#F3B3A6" />
+        <text x="40" y="55" fill="#1F0812">Q0</text>
+        <text x="50" y="100" fill="#1F0812" font-size="25px">&#x21BB</text>
+        <text x="40" y="110" fill="#1F0812">(b, a, λ)</text>
+        <text x="40" y="122" fill="#1F0812">(a, a, a)</text>
+        <text x="40" y="135" fill="#1F0812">(λ, b, λ)</text>
+    </svg>
+
+    <svg id="seta2" class="svg1" xmlns="http://www.w3.org/2000/svg" viewBox="0 40 400 200">
+        <text x="80" y="50" fill="#1F0812" font-size="60px">(a, λ, a)</text>
+        <marker id="triangle"
+                viewBox="0 0 10 10" refX="0" refY="5"
+                markerUnits="strokeWidth"
+                markerWidth="20" markerHeight="15"
+                orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" />
+        </marker>
+        <line id="line1" x1="-50" y1="150" x2="350" y2="150" marker-end="url(#triangle)" stroke="#1F0812" />
+        <i class="arrow right"></i>
+    </svg>
+
+
+    <svg id='circulo2' class="svg1">
+        <circle cx="50" cy="50" r="40" stroke="#1F0812" fill="#F3B3A6" class='css-filter' />
+        <text x="40" y="55" fill="#1F0812">Q1</text>
+        <text x="50" y="100" fill="#1F0812" font-size="25px">&#x21BB</text>
+        <text x="40" y="120" fill="#1F0812">(b, a, λ)</text>
+    </svg>
+
+    <div>
+        <h3 class="title">Fita: </h3>
+        <p id="fita"><b>Vazia</b></p>
+    </div>
+
+    <div style="position: absolute">
+        <table id="tabela">
+            <tr>
+                <th class="title">Pilha</th>
+            </tr>
+            <tr>
+                <td><p> λ </p></td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <p>Digite aqui a palavra desejada: </p>
+        <input type="text" id="palavra" />
+        <button onclick="computarPalavra()">Computar</button>
+        <p id="resultado"> </p>
+    </div>
+
+    <a href="automato2.html"> Próximo </a>
+
+    <!-- GreenSock Animation Platform -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
